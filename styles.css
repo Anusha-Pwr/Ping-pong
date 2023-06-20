@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --hue: 200; /* css custom properties */
+    --saturation: 50%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: hsl(var(--hue), var(--saturation), 20%);
+}
+
+body{
+    background-color: var(--background-color);
+    overflow: hidden; /* to hide the scroll bars when ball exceeds window size*/
+}
+
+.paddle {
+    position: absolute;
+    --position: 50;
+    top: calc(var(--position)*1vh);
+    transform: translateY(-50%);
+    background-color: var(--foreground-color);
+    height: 10vh;
+    width: 1vh;
+
+}
+
+.paddle.left {
+    left: 1vw;
+}
+
+.paddle.right {
+    right: 1vw;
+}
+
+.ball {
+    position: absolute;
+    --x: 50;
+    --y: 50;
+    left: calc(var(--x)*1vw);
+    top: calc(var(--y)*1vh);
+    transform: translate(-50%, -50%);
+    background-color: var(--foreground-color);
+    height: 2.5vh;
+    width: 2.5vh;
+    border-radius: 50%;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: var(--foreground-color);
+}
+
+.score > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: 0.5;
+}
+
+.score > :first-child {
+    text-align: right;
+    border-right: 0.5vh solid var(--foreground-color);
+}
